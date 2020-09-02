@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CovidDiningRails</title>
+    <title>Covid Dining App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,14 @@
   </head>
 
   <body>
+
+  <h1>Welcome to the Pandemic Dining App</h1>
+  <table class="nav">
+    <th>
+    <tr><a href="<%= restaurants_path %>"/>Restaurants</a></tr>
+    <%= menu %>
+    </th>
+    </table>
     <%= yield %>
   </body>
 </html>
