@@ -1,0 +1,18 @@
+<%= form_for user do |f| %>
+    <table>
+    <tr><td><%= f.label :user_name, 'User Name : ' %></td>
+    <td><%= f.text_field :user_name %></td></tr>
+    <tr><td><%= f.label :email, 'Email : ' %></td>
+    <td><%= f.text_field :email %></td></tr>
+    <tr><td><%= f.label :password, 'Password : ' %></td>
+    <td><%= f.password_field :password %></tr></td>
+    <% if current_user && current_user.admin %>
+        <tr><td><%= f.label :admin, 'Admin ? ' %></td>
+        <td><%= f.check_box :admin %></td></tr>
+    <% else %>
+        <%= f.hidden_field :admin, value: false %>
+    <% end %>
+    </table>
+    <br>
+    <%= f.submit %>
+<% end %>

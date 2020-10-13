@@ -1,0 +1,9 @@
+<h1><%= link_to "#{@review.user.user_name}'s", user_path(@review.user) %> Review of <%= link_to @review.restaurant.name, restaurant_path(@review.restaurant) %></h1>
+<h4>Rating : <%= @review.rating %></h4>
+<h4>Content</h4>
+<p><%= @review.content %></p>
+<% if current_user && @review.user == current_user %>
+    <%= link_to "Edit Review", edit_restaurant_review_path(@review.restaurant, @review) %>
+<% elsif current_user && current_user.admin %>
+    <%= link_to "Delete Review", restaurant_review_path(@review.restaurant, @review), method: "delete" %>
+<% end %>

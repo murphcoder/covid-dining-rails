@@ -7,6 +7,7 @@ class CreateRestaurants < ActiveRecord::Migration[6.0]
       t.boolean :outdoor_dining
       t.boolean :indoor_dining
       t.boolean :follows_rules
+      t.belongs_to :author, :class_name => "User"
 
       t.timestamps
     end

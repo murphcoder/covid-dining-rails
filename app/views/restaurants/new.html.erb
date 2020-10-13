@@ -1,0 +1,14 @@
+<h3>Create new restaurant below</h3>
+<%= form_for @restaurant do |f| %>
+    <%= render partial: "form", locals: {f: f} %>
+    <h3>Hours</h3>
+    <%= render partial: "days", locals: {form: f} %>
+    <h3>Enter an initial review</h3>
+    <%= f.fields_for :reviews, Review.new do |r| %>
+        <%= r.hidden_field :user_id, value: current_user.id %>
+        <p><%= r.label :rating, 'Rating : ' %>
+        <%= r.select :rating, Array(1..5) %></p>
+        <p><%= r.text_area :content, class: "review" %></p>
+    <% end %>
+    <%= f.submit %>
+<% end %>

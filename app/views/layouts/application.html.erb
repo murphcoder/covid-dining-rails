@@ -10,14 +10,15 @@
   </head>
 
   <body>
-
-  <h1>Welcome to the Pandemic Dining App</h1>
+  <h1><%= flash[:notice] %></h1>
   <table class="nav">
-    <th>
-    <tr><a href="<%= restaurants_path %>"/>Restaurants</a></tr>
+    <tr>
+    <td><a href="<%= restaurants_path %>"/>Restaurants</a></td>
     <%= menu %>
-    </th>
+    </tr>
     </table>
-    <%= yield %>
+    <div class="main">
+      <%= yield %>
+    </div>
   </body>
 </html>

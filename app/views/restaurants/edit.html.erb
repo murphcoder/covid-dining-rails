@@ -1,0 +1,36 @@
+<h3>Modify <%= @restaurant.name %> below</h3>
+<%= form_for @restaurant do |f| %>
+    <%= render partial: "form", locals: {f: f} %>
+    <% @restaurant.days_sorted.each do |day| %>
+        <p>
+        <table>
+        <tr><th><%= day.weekday_string %></th></tr>
+        <%= f.fields_for :days, day do |d| %>
+            <tr><td>Closed?</td>
+            <td><%= d.check_box :closed %></td></tr>
+            <tr><td>Opening Time</td>
+            <td><%= d.select :opening_time, time_list %></td></tr>
+            <tr><td>Closing Time</td>
+            <td><%= d.select :closing_time, time_list %></td></tr>
+        <% end %>
+        </table>
+        </p>
+    <% end %>
+    </p>
+    <% if !current_user.admin %>
+        <h4>Your 
+    <% else %>
+        <h4>
+    <% end %>
+    Reviews</h4>
+    <% editable_reviews(@restaurant).each do |review| %>
+        <%= f.fields_for :reviews, review do |r| %>
+            <p>Rating : <%= r.select :rating, Array(1..5) %></p>
+            <p><%= r.text_area :content, class: "review" %></p>
+        <% end %>
+    <% end %>
+    <%= f.submit %>
+<% end %>
+<p><%= link_to "Delete Restaurant", restaurant_path(@restaurant), method: 'delete' %></p>
+
+

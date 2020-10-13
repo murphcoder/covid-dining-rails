@@ -1,0 +1,17 @@
+<h1>Restaurants</h1>
+<% if @restaurants.empty? %>
+    No Restaurants In Database. Please add one!
+<% else %>
+    <ul>
+    <% alphabetize(@restaurants).each do |restaurant| %>
+        <li><%= link_to restaurant.name, restaurant_path(restaurant) %>
+        <% unless restaurant.follows_rules? %>
+            <nobr class="warning">RESTAURANT REPORTED TO BE UNSAFE</nobr>
+        <% end %>
+        </li>
+    <% end %>
+    </ul>
+<% end %>
+<% if is_logged_in? %>
+    <p><%= link_to "Add Restaurant", new_restaurant_path %></p>
+<% end %>

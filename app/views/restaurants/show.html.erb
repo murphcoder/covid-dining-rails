@@ -1,0 +1,39 @@
+<h1><%= @restaurant.name %></h1>
+<h4>Restaurant submitted by : <%= @restaurant.author.user_name %></h4>
+<% unless @restaurant.follows_rules? %>
+    <p class="warning">This restaurant has been reported by <%= @restaurant.author.user_name %>
+    to not be following local health regulations. Exercise caution when eating here.</p>
+<% end %>
+<h3>Address</h3>
+<p><%= @restaurant.address %></p>
+<h3>Hours</h3>
+<table>
+<% @restaurant.days_sorted.each do |day| %>
+    <tr><td><%= day.print[0] %></td><td><%= day.print[1] %></td></tr>
+<% end %>
+<tr>
+<td>Carryout?</td>
+<td><%= yes_or_no(@restaurant.carryout) %></td>
+</tr>
+<tr>
+<td>Outdoor Dining?</td>
+<td><%= yes_or_no(@restaurant.outdoor_dining) %></td>
+</tr>
+<tr>
+<td>Indoor Dining?</td>
+<td><%= yes_or_no(@restaurant.indoor_dining) %></td>
+</tr>
+</table>
+<p>Average Rating : <%= @restaurant.average_rating %></p>
+<% if is_logged_in? && (current_user == @restaurant.author || current_user.admin) %>
+    <%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %>
+<% end %>
+<h3>Reviews</h3>
+<% @restaurant.reviews.each do |review| %>
+    <p>User : <%= link_to review.user.user_name, user_path(review.user) %><br>
+    Rating : <%= review.rating %><br>
+    <%= link_to review.short, restaurant_review_path(@restaurant, review) %><br></p>
+<% end %>
+<% if is_logged_in? && !has_written_review?(@restaurant) %>
+    <%= link_to "Write New Review", new_restaurant_review_path(@restaurant) %>
+<% end %>

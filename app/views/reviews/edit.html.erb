@@ -1,0 +1,7 @@
+<h3>Edit 
+<% if !current_user.admin %>
+    your 
+<% end %>
+review of <%= @review.restaurant.name %></h3>
+<%= render partial: "form", locals: {review: @review} %>
+<%= link_to "Delete Review", review_path(@review), method: "delete" %>

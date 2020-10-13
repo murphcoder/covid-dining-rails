@@ -5,7 +5,7 @@ module ApplicationHelper
     end
 
     def current_user
-        User.find(session[:user_id])
+        User.find_by(id: session[:user_id])
     end
 
     def menu
@@ -13,6 +13,24 @@ module ApplicationHelper
             render 'logged_in'
         else
             render 'logged_out'
+        end
+    end
+
+    def day_to_week(num)
+        if num == 0
+            "Sunday"
+        elsif num == 1
+            "Monday"
+        elsif num == 2
+            "Tuesday"
+        elsif num == 3
+            "Wednesday"
+        elsif num == 4
+            "Thursday"
+        elsif num == 5
+            "Friday"
+        elsif num == 6
+            "Saturday"
         end
     end
 

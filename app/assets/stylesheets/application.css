@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+     background-color: lightsalmon;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+
+ .nav {
+     width: 100%;
+ }
+
+ .nav td {
+     text-align: center;
+     width: auto;
+ }
+
+ .main {
+     margin-left: 30%;
+     align-self: center;
+ }
+
+ .questions td {
+     width: 10%;
+ }
+
+ .review {
+     width: 400px;
+     height: 200px;
+ }
+
+ .warning {
+     font-weight: bold;
+     color: red;
+ }

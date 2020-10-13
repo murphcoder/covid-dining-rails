@@ -1,0 +1,15 @@
+<%= f.hidden_field :author_id, value: current_user.id %>
+<table class="questions">
+<tr><td><%= f.label :name, 'Name' %></td>
+<td><%= f.text_field :name %></td></tr>
+<tr><td><%= f.label :address, 'Address' %></td>
+<td><%= f.text_area :address %></td></tr>
+<tr><td><%= f.label :carryout, 'Does it have carryout?' %></td>
+<td><%= f.check_box :carryout %></td></tr>
+<tr><td><%= f.label :outdoor_dining, 'Does it have outdoor dining?' %></td>
+<td><%= f.check_box :outdoor_dining %></td></tr>
+<tr><td><%= f.label :indoor_dining, 'Does it have indoor dining?' %></td>
+<td><%= f.check_box :indoor_dining %></td></tr>
+<tr><td><%= f.label :follows_rules, 'Is this restaurant following local Covid-19 rules and regulations?' %></td>
+<td><%= f.check_box :follows_rules %></td></tr>
+</table>

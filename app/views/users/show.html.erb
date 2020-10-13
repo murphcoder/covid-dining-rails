@@ -1,0 +1,14 @@
+<h1>Your Profile</h1>
+<p>User name : <%= @user.user_name %></p>
+<p>Email : <%= @user.email %></p>
+<p><%= link_to "Click here to edit your information", edit_user_path(@user) %></p>
+<h3>Your Reviews</h3>
+<% if @user.reviews.empty? %>
+    You have written no reviews.
+<% else %>
+    <% @user.reviews.each do |review| %>
+        <p>Restaurant : <%= link_to review.restaurant.name, restaurant_path(review.restaurant) %><br>
+        Rating : <%= review.rating %><br>
+        <%= link_to review.short, user_review_path(@user, review) %><br></p>
+    <% end %>
+<% end %>

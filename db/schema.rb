@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_09_02_165212) do
 
   create_table "days", force: :cascade do |t|
+    t.boolean "closed"
     t.datetime "weekday"
     t.datetime "opening_time"
     t.datetime "closing_time"
@@ -29,8 +30,10 @@ ActiveRecord::Schema.define(version: 2020_09_02_165212) do
     t.boolean "outdoor_dining"
     t.boolean "indoor_dining"
     t.boolean "follows_rules"
+    t.integer "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_restaurants_on_author_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -48,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_165212) do
     t.string "user_name"
     t.string "email"
     t.string "password_digest"
+    t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

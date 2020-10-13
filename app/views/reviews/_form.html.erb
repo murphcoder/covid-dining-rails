@@ -1,0 +1,10 @@
+<%= form_for review do |f| %>
+    <p>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :restaurant_id, value: review.restaurant.id %>
+    <p><%= f.label :rating, 'Rating : ' %>
+    <%= f.select :rating, Array(1..5) %></p>
+    <p><%= f.text_area :content, class: "review" %></p>
+    <%= f.submit %>
+    </p>
+<% end %>

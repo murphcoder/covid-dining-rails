@@ -1,0 +1,3 @@
+<h2>Edit <%= @user.user_name %>'s Information</h2>
+<%= render partial: "form", locals: {user: @user} %>
+<p><%= link_to "Delete User", user_path(@user), method: 'delete' %></p>

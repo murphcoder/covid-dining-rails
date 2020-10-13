@@ -1,0 +1,18 @@
+<% count = 0 %>
+<% until count == 7 %>
+    <%= form.fields_for :days, Day.new do |d| %>
+        <%= d.hidden_field :weekday_number, value: count %>
+        <p>
+        <table>
+        <td><th><%= day_to_week(count) %></td></tr>
+        <tr><td>Closed?</td>
+        <td><%= d.check_box :closed %></td></tr>
+        <tr><td>Opening Time</td>
+        <td><%= d.select :opening_time, time_list %></td></tr>
+        <tr><td>Closing Time</td>
+        <td><%= d.select :closing_time, time_list %></td></tr>
+        </table>
+        </p>
+    <% end %>
+    <% count += 1 %>
+<% end %>

@@ -1,0 +1,5 @@
+<td><%= link_to "Your Profile", user_path(current_user) %></td>
+<% if current_user.admin %>
+    <td><%= link_to "Grant Admin Privileges", users_path %></td>
+<% end %>
+<td><%= link_to "Log Out", signout_path, method: 'delete' %></td>
