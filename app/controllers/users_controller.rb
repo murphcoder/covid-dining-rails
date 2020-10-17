@@ -12,7 +12,16 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(user_params)
+        user = User.new(user_params)
+        if User.all.any? {|account| account.user_name == user.user_name}
+            flash[:notice] = "User name taken. Please choose another."
+            user = nil
+        elsif User.all.any? {|account| account.email == user.email}
+            flash[:notice] = "Email taken. Please choose another."
+            user = nil
+        else
+            user.save
+        end
         if user
             session[:user_id] = user.id
             redirect_to user_path(user)

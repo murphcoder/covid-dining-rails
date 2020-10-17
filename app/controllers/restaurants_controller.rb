@@ -21,7 +21,13 @@ class RestaurantsController < ApplicationController
     end
 
     def create
-        diner = Restaurant.create(restaurant_params)
+        diner = Restaurant.new(restaurant_params)
+        if Restaurant.all.any? {|restaurant| restaurant.name == diner.name}
+            flash[:notice] = "Restaurant name taken. Please choose another."
+            diner = nil
+        else
+            diner.save
+        end
         if diner
             redirect_to restaurant_path(diner)
         else
@@ -43,8 +49,8 @@ class RestaurantsController < ApplicationController
 
     def destroy
         diner = Restaurant.find(params[:id])
-        diner.reviews.all {|review| review.destroy}
-        diner.days.all {|day| day.destroy}
+        diner.reviews.each {|review| review.destroy}
+        diner.days.each {|day| day.destroy}
         diner.destroy
         flash[:notice] = "Restaurant deleted."
         redirect_to restaurants_path
