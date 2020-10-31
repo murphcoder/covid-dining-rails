@@ -1,4 +1,5 @@
 <h3>Modify <%= @restaurant.name %> below</h3>
+<%= render partial: "errors", locals: {restaurant: @restaurant} %>
 <%= form_for @restaurant do |f| %>
     <%= render partial: "form", locals: {f: f} %>
     <% @restaurant.days_sorted.each do |day| %>

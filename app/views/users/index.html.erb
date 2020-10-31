@@ -1,6 +1,6 @@
 <h1>Users</h1>
-<table>
 <%= form_tag admin_update_path do %>
+    <table>
     <% @users.each do |user| %>
         <tr><td><label><%= user.user_name %></label></td>
         <td><%= check_box_tag "users[]", value = user.id, checked = user.admin %></td></tr>

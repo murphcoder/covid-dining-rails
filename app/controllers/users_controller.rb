@@ -12,21 +12,13 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.new(user_params)
-        if User.all.any? {|account| account.user_name == user.user_name}
-            flash[:notice] = "User name taken. Please choose another."
-            user = nil
-        elsif User.all.any? {|account| account.email == user.email}
-            flash[:notice] = "Email taken. Please choose another."
-            user = nil
+        @user = User.new(user_params)
+        @user.facebook = false
+        if @user.save
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
         else
-            user.save
-        end
-        if user
-            session[:user_id] = user.id
-            redirect_to user_path(user)
-        else
-            redirect_to new_user_path
+            render :new
         end
     end
 
@@ -37,13 +29,20 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
+        if @user.facebook
+            return head(:forbidden)
+        end
         correct_user(@user)
     end
 
     def update
-        user = User.find(params[:id])
-        user.update(user_params)
-        redirect_to user_path(user)
+        @user = User.find(params[:id])
+        @user.update(user_params)
+        if @user.valid?
+            redirect_to user_path(@user)
+        else
+            render :edit
+        end
     end
 
     def destroy

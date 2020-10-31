@@ -1,4 +1,5 @@
 <h3>Create new restaurant below</h3>
+<%= render partial: "errors", locals: {restaurant: @restaurant} %>
 <%= form_for @restaurant do |f| %>
     <%= render partial: "form", locals: {f: f} %>
     <h3>Hours</h3>

@@ -1,7 +1,7 @@
 module RestaurantsHelper
 
     def alphabetize(restaurants)
-        restaurants.sort_by {|restaurant| restaurant.name }
+        restaurants.order(name: :asc)
     end
 
     def yes_or_no(bool)

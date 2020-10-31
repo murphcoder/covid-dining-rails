@@ -1,0 +1,9 @@
+<% if !restaurant.errors.empty? %>
+    <div class="error">
+    <h4>Please correct the following errors.</h4><ul>
+    <% restaurant.errors.full_messages.each do |error| %>
+        <li><%= error %>.</li>
+    <% end %>
+    </ul>
+    </div>
+<% end %>

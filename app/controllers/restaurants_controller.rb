@@ -21,29 +21,21 @@ class RestaurantsController < ApplicationController
     end
 
     def create
-        diner = Restaurant.new(restaurant_params)
-        if Restaurant.all.any? {|restaurant| restaurant.name == diner.name}
-            flash[:notice] = "Restaurant name taken. Please choose another."
-            diner = nil
+        @restaurant = Restaurant.new(restaurant_params)
+        if @restaurant.save
+            redirect_to restaurant_path(@restaurant)
         else
-            diner.save
-        end
-        if diner
-            redirect_to restaurant_path(diner)
-        else
-            flash[:notice] = "Error. Please reenter information."
-            redirect_to new_restaurant_path
+            render :new
         end
     end
 
     def update
-        diner = Restaurant.find(params[:id])
-        diner.update(restaurant_params)
-        if diner
-            redirect_to restaurant_path(diner)
+        @restaurant = Restaurant.find(params[:id])
+        @restaurant.update(restaurant_params)
+        if @restaurant.valid?
+            redirect_to restaurant_path(@restaurant)
         else
-            flash[:notice] = "Error. Please reenter information."
-            redirect_to edit_restaurant_path(Restaurant.find(params[:id]))
+            render :edit
         end
     end
 

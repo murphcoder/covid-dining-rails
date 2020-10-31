@@ -46,3 +46,7 @@
      font-weight: bold;
      color: red;
  }
+
+ .error {
+     color: darkred;
+ }

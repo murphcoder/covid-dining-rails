@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_165212) do
+ActiveRecord::Schema.define(version: 2020_10_31_072714) do
 
   create_table "days", force: :cascade do |t|
     t.boolean "closed"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 2020_09_02_165212) do
     t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
+    t.string "uid"
+    t.boolean "facebook"
   end
 
 end

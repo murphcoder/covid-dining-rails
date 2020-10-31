@@ -8,9 +8,9 @@
         <tr><td>Closed?</td>
         <td><%= d.check_box :closed %></td></tr>
         <tr><td>Opening Time</td>
-        <td><%= d.select :opening_time, time_list %></td></tr>
+        <td><%= d.select :open, time_list %></td></tr>
         <tr><td>Closing Time</td>
-        <td><%= d.select :closing_time, time_list %></td></tr>
+        <td><%= d.select :close, time_list %></td></tr>
         </table>
         </p>
     <% end %>

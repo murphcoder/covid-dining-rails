@@ -36,29 +36,27 @@ class ReviewsController < ApplicationController
 
     def create
         diner = Restaurant.find(review_params[:restaurant_id])
-        review = Review.create(review_params)
-        if review
-            redirect_to restaurant_review_path(diner, review)
+        @review = Review.new(review_params)
+        if @review.save
+            redirect_to restaurant_review_path(diner, @review)
         else
-            flash[:notice] = "Invalid input. Please try again."
-            redirect_to new_restaurant_review(diner)
+            render :new
         end
     end
 
     def update
-        review = Review.find(params[:id])
-        review.update(review_params)
-        if review
+        @review = Review.find(params[:id])
+        @review.update(review_params)
+        if @review.valid?
             redirect_to review_path(review)
         else
-            flash[:notice] = "Error. Please reenter information."
-            redirect_to edit_review_path(Review.find(params[:id]))
+            render :edit
         end
     end
 
     def destroy
         review = Review.find(params[:id])
-        diner = Restaurant.find(params[:restaurant_id])
+        diner = Restaurant.find_by(id: params[:restaurant_id])
         review.destroy
         flash[:notice] = "Review deleted."
         if diner

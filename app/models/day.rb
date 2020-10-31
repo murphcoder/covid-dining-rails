@@ -14,7 +14,7 @@ class Day < ApplicationRecord
     end
 
     def open
-        self.opening_time.strftime("%l:%M %p")
+        self.opening_time.strftime("%l:%M %p").strip
     end
 
     def open=(open_time)
@@ -22,7 +22,7 @@ class Day < ApplicationRecord
     end
 
     def close
-        self.closing_time.strftime("%l:%M %p")
+        self.closing_time.strftime("%l:%M %p").strip
     end
 
     def close=(close_time)
