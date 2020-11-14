@@ -1,4 +1,13 @@
 <h1>Log In Below</h1>
+<% if @user && !@user.errors.empty? %>
+    <div class="error">
+    <h4>Please correct the following errors.</h4><ul>
+    <% @user.errors.full_messages.each do |error| %>
+        <li><%= error %>.</li>
+    <% end %>
+    </ul>
+    </div>
+<% end %>
 <%= form_tag signin_path, method: "post" do %>
     <table><tr>
     <td><label>Username : </label></td>

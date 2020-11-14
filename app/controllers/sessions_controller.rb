@@ -1,13 +1,17 @@
 class SessionsController < ApplicationController
 
     def new
+        @user = User.new
     end
 
     def create
-        user = User.find_by(user_name: params[:user_name])
-        if user && user.authenticate(params[:password])
+        @user = User.find_by(user_name: params[:user_name])
+        if @user && @user.facebook
+            @user.errors[:facebook] << "users must use Facebook login"
+            render :new
+        elsif @user && @user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect_to user_path(user)
+            redirect_to user_path(@user)
         else
             flash[:notice] = "Invalid log in. Try again."
             redirect_to signin_path
