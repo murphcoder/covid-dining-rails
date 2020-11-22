@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
             @user.errors[:facebook] << "users must use Facebook login"
             render :new
         elsif @user && @user.authenticate(params[:password])
-            session[:user_id] = user.id
+            session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
             flash[:notice] = "Invalid log in. Try again."
