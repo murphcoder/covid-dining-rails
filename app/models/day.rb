@@ -17,16 +17,8 @@ class Day < ApplicationRecord
         self.opening_time.strftime("%l:%M %p").strip
     end
 
-    def open=(open_time)
-        self.opening_time = DateTime.parse(open_time)
-    end
-
     def close
         self.closing_time.strftime("%l:%M %p").strip
-    end
-
-    def close=(close_time)
-        self.closing_time = DateTime.parse(close_time)
     end
 
     def print

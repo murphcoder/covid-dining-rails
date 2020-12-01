@@ -26803,3 +26803,891 @@ Processing by RestaurantsController#index as HTML
 Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.8ms | Allocations: 5660)
 
 
+Started GET "/" for ::1 at 2020-12-01 06:47:33 -0600
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 50.1ms | Allocations: 9329)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered application/_logged_out.html.erb (Duration: 1.5ms | Allocations: 181)
+Completed 200 OK in 135ms (Views: 114.1ms | ActiveRecord: 2.9ms | Allocations: 23924)
+
+
+Started GET "/auth/facebook" for ::1 at 2020-12-01 06:47:43 -0600
+Started GET "/auth/facebook" for ::1 at 2020-12-01 06:47:44 -0600
+Started GET "/auth/facebook/callback?code=AQAySRW4b3b6wPxMkpmAXkSi--tcpSTAOEMUQKV6LjOtOu770hjeO3O3qDmSs5HSA4XkCPBzeFgpSkQWrz8qrD9nQe1s_9tRmvnx0ocVpteEUFX7_7FnC-mwI4qW6FciYH3gFQtCEkScmynbFRUBJdM1-bd49S9cZ1sCkNm-3wY0Cu_Zfb3U-iyonpiEvoGg98_DCoL0d-clC_Y0avHW1moSMGyUFvKG0XXQyDB_8jNYpyXY-w9QS5-ryTV0c33xgCC7jzuOZqYio5TQzhzi460PU4c7Du3CzTaFZL9jtSMJuQ4GzqOrTa8xrxRGj6DuZTXiwF5bzqp0MrwHU-NTfApz&state=5f05641f73b56a28498d0125e3d6422f9c2f052e74b56413" for ::1 at 2020-12-01 06:47:44 -0600
+Processing by SessionsController#facebook_create as HTML
+  Parameters: {"code"=>"AQAySRW4b3b6wPxMkpmAXkSi--tcpSTAOEMUQKV6LjOtOu770hjeO3O3qDmSs5HSA4XkCPBzeFgpSkQWrz8qrD9nQe1s_9tRmvnx0ocVpteEUFX7_7FnC-mwI4qW6FciYH3gFQtCEkScmynbFRUBJdM1-bd49S9cZ1sCkNm-3wY0Cu_Zfb3U-iyonpiEvoGg98_DCoL0d-clC_Y0avHW1moSMGyUFvKG0XXQyDB_8jNYpyXY-w9QS5-ryTV0c33xgCC7jzuOZqYio5TQzhzi460PU4c7Du3CzTaFZL9jtSMJuQ4GzqOrTa8xrxRGj6DuZTXiwF5bzqp0MrwHU-NTfApz", "state"=>"5f05641f73b56a28498d0125e3d6422f9c2f052e74b56413"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "179947197005780"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:27:in `facebook_create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/sessions_controller.rb:33:in `facebook_create'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["password_digest", "$2a$12$2mqTN3TnxCOcsb4FcpZiIu8S2BKv/ir00GR2qSrYVCqTQ4FQKYsFG"], ["updated_at", "2020-12-01 12:47:45.584273"], ["id", 7]]
+  ↳ app/controllers/sessions_controller.rb:33:in `facebook_create'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/sessions_controller.rb:33:in `facebook_create'
+Redirected to http://localhost:3000/users/7
+Completed 302 Found in 313ms (ActiveRecord: 3.7ms | Allocations: 12205)
+
+
+Started GET "/users/7" for ::1 at 2020-12-01 06:47:45 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_facebook.html.erb (Duration: 1.4ms | Allocations: 149)
+  [1m[36mReview Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:8
+  Rendered users/show.html.erb within layouts/application (Duration: 21.3ms | Allocations: 4574)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 6.2ms | Allocations: 1339)
+Completed 200 OK in 46ms (Views: 38.7ms | ActiveRecord: 2.6ms | Allocations: 12423)
+
+
+Started GET "/users" for ::1 at 2020-12-01 06:47:48 -0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1261)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 5.6ms | Allocations: 1163)
+Completed 200 OK in 34ms (Views: 28.6ms | ActiveRecord: 0.8ms | Allocations: 7368)
+
+
+Started GET "/restaurants" for ::1 at 2020-12-01 06:47:51 -0600
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 37.3ms | Allocations: 1397)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 3.6ms | Allocations: 1225)
+Completed 200 OK in 54ms (Views: 51.2ms | ActiveRecord: 0.9ms | Allocations: 7175)
+
+
+Started GET "/restaurants/new" for ::1 at 2020-12-01 06:47:53 -0600
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 1.7ms | Allocations: 186)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 16.5ms | Allocations: 2138)
+  Rendered restaurants/_days.html.erb (Duration: 25.5ms | Allocations: 9528)
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 51.9ms | Allocations: 12898)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 1.4ms | Allocations: 13632)
+
+
+  
+ActionView::Template::Error (undefined method `strftime' for nil:NilClass):
+     8:         <tr><td>Closed?</td>
+     9:         <td><%= d.check_box :closed %></td></tr>
+    10:         <tr><td>Opening Time</td>
+    11:         <td><%= d.select :open, time_list %></td></tr>
+    12:         <tr><td>Closing Time</td>
+    13:         <td><%= d.select :close, time_list %></td></tr>
+    14:         </table>
+  
+app/models/day.rb:17:in `open'
+app/views/restaurants/_days.html.erb:11
+app/views/restaurants/_days.html.erb:3
+app/views/restaurants/new.html.erb:6
+app/views/restaurants/new.html.erb:3
+Started GET "/restaurants/new" for ::1 at 2020-12-01 06:52:30 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.5ms | Allocations: 181)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 15.2ms | Allocations: 9559)
+  Rendered restaurants/_days.html.erb (Duration: 20.3ms | Allocations: 10399)
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 38.9ms | Allocations: 21159)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 2.8ms | Allocations: 31549)
+
+
+  
+ActionView::Template::Error (undefined method `open_time' for #<Day:0x00007faecf3dcf18>
+Did you mean?  open_time=
+               opening_time):
+     8:         <tr><td>Closed?</td>
+     9:         <td><%= d.check_box :closed %></td></tr>
+    10:         <tr><td>Opening Time</td>
+    11:         <td><%= d.select :open_time, time_list %></td></tr>
+    12:         <tr><td>Closing Time</td>
+    13:         <td><%= d.select :close_time, time_list %></td></tr>
+    14:         </table>
+  
+app/views/restaurants/_days.html.erb:11
+app/views/restaurants/_days.html.erb:3
+app/views/restaurants/new.html.erb:6
+app/views/restaurants/new.html.erb:3
+Started GET "/restaurants/new" for ::1 at 2020-12-01 06:53:54 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.4ms | Allocations: 181)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 23.0ms | Allocations: 9586)
+  Rendered restaurants/_days.html.erb (Duration: 10.8ms | Allocations: 8547)
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 37.1ms | Allocations: 19333)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 2.3ms | Allocations: 29699)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1)):
+     8:         <tr><td>Closed?</td>
+     9:         <td><%= d.check_box :closed %></td></tr>
+    10:         <tr><td>Opening Time</td>
+    11:         <td><%= d.select :open=, time_list %></td></tr>
+    12:         <tr><td>Closing Time</td>
+    13:         <td><%= d.select :close=, time_list %></td></tr>
+    14:         </table>
+  
+app/models/day.rb:20:in `open='
+app/views/restaurants/_days.html.erb:11
+app/views/restaurants/_days.html.erb:3
+app/views/restaurants/new.html.erb:6
+app/views/restaurants/new.html.erb:3
+Started GET "/restaurants/new" for ::1 at 2020-12-01 06:56:46 -0600
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.9ms | Allocations: 181)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 6.4ms | Allocations: 1496)
+  Rendered restaurants/_days.html.erb (Duration: 5.6ms | Allocations: 2644)
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 17.3ms | Allocations: 5283)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.6ms | Allocations: 6599)
+
+
+  
+ActionView::Template::Error (undefined method `strftime' for nil:NilClass):
+     8:         <tr><td>Closed?</td>
+     9:         <td><%= d.check_box :closed %></td></tr>
+    10:         <tr><td>Opening Time</td>
+    11:         <td><%= d.select :open, time_list %></td></tr>
+    12:         <tr><td>Closing Time</td>
+    13:         <td><%= d.select :close, time_list %></td></tr>
+    14:         </table>
+  
+app/models/day.rb:17:in `open'
+app/views/restaurants/_days.html.erb:11
+app/views/restaurants/_days.html.erb:3
+app/views/restaurants/new.html.erb:6
+app/views/restaurants/new.html.erb:3
+Started GET "/restaurants/new" for ::1 at 2020-12-01 06:58:39 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.0ms | Allocations: 17)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 14.7ms | Allocations: 9279)
+  Rendered restaurants/_days.html.erb (Duration: 10.5ms | Allocations: 8557)
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 26.2ms | Allocations: 18157)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 2.3ms | Allocations: 27938)
+
+
+  
+ActionView::Template::Error (undefined method `strftime' for nil:NilClass):
+     8:         <tr><td>Closed?</td>
+     9:         <td><%= d.check_box :closed %></td></tr>
+    10:         <tr><td>Opening Time</td>
+    11:         <td><%= d.select :open, time_list %></td></tr>
+    12:         <tr><td>Closing Time</td>
+    13:         <td><%= d.select :close, time_list %></td></tr>
+    14:         </table>
+  
+app/models/day.rb:17:in `open'
+app/views/restaurants/_days.html.erb:11
+app/views/restaurants/_days.html.erb:3
+app/views/restaurants/new.html.erb:6
+app/views/restaurants/new.html.erb:3
+Started GET "/restaurants/new" for ::1 at 2020-12-01 06:59:12 -0600
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.8ms | Allocations: 181)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 5.3ms | Allocations: 1496)
+  Rendered restaurants/_days.html.erb (Duration: 2.4ms | Allocations: 2245)
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 13.7ms | Allocations: 4884)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.4ms | Allocations: 6200)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1)):
+     8:         <tr><td>Closed?</td>
+     9:         <td><%= d.check_box :closed %></td></tr>
+    10:         <tr><td>Opening Time</td>
+    11:         <td><%= d.select :open=, time_list %></td></tr>
+    12:         <tr><td>Closing Time</td>
+    13:         <td><%= d.select :close=, time_list %></td></tr>
+    14:         </table>
+  
+app/models/day.rb:20:in `open='
+app/views/restaurants/_days.html.erb:11
+app/views/restaurants/_days.html.erb:3
+app/views/restaurants/new.html.erb:6
+app/views/restaurants/new.html.erb:3
+Started GET "/restaurants/new" for ::1 at 2020-12-01 07:01:03 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.3ms | Allocations: 181)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 29.2ms | Allocations: 9591)
+  Rendered restaurants/_days.html.erb (Duration: 9.7ms | Allocations: 8407)
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 42.1ms | Allocations: 19193)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 2.0ms | Allocations: 29544)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1)):
+     8:         <tr><td>Closed?</td>
+     9:         <td><%= d.check_box :closed %></td></tr>
+    10:         <tr><td>Opening Time</td>
+    11:         <td><%= d.select :open=, time_list %></td></tr>
+    12:         <tr><td>Closing Time</td>
+    13:         <td><%= d.select :close=, time_list %></td></tr>
+    14:         </table>
+  
+app/models/day.rb:20:in `open='
+app/views/restaurants/_days.html.erb:11
+app/views/restaurants/_days.html.erb:3
+app/views/restaurants/new.html.erb:6
+app/views/restaurants/new.html.erb:3
+Started GET "/restaurants" for ::1 at 2020-12-01 07:04:09 -0600
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1712)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 6.7ms | Allocations: 1387)
+Completed 200 OK in 27ms (Views: 23.6ms | ActiveRecord: 1.7ms | Allocations: 8203)
+
+
+Started GET "/restaurants/new" for ::1 at 2020-12-01 07:04:12 -0600
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.1ms | Allocations: 17)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 4.7ms | Allocations: 1219)
+  Rendered restaurants/_days.html.erb (Duration: 3.1ms | Allocations: 2000)
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 9.7ms | Allocations: 3485)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.4ms | Allocations: 4062)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1)):
+     8:         <tr><td>Closed?</td>
+     9:         <td><%= d.check_box :closed %></td></tr>
+    10:         <tr><td>Opening Time</td>
+    11:         <td><%= d.select :open=, time_list %></td></tr>
+    12:         <tr><td>Closing Time</td>
+    13:         <td><%= d.select :close=, time_list %></td></tr>
+    14:         </table>
+  
+app/models/day.rb:20:in `open='
+app/views/restaurants/_days.html.erb:11
+app/views/restaurants/_days.html.erb:3
+app/views/restaurants/new.html.erb:6
+app/views/restaurants/new.html.erb:3
+Started GET "/restaurants" for ::1 at 2020-12-01 07:04:14 -0600
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1380)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 2.4ms | Allocations: 1219)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.8ms | Allocations: 6873)
+
+
+Started GET "/users/7" for ::1 at 2020-12-01 07:04:16 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_facebook.html.erb (Duration: 0.7ms | Allocations: 144)
+  [1m[36mReview Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:8
+  Rendered users/show.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2989)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 3.2ms | Allocations: 1163)
+Completed 200 OK in 32ms (Views: 24.0ms | ActiveRecord: 1.5ms | Allocations: 10364)
+
+
+Started GET "/restaurants" for ::1 at 2020-12-01 07:04:18 -0600
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 1382)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 3.7ms | Allocations: 1223)
+Completed 200 OK in 28ms (Views: 25.4ms | ActiveRecord: 0.9ms | Allocations: 6881)
+
+
+Started GET "/restaurants/2" for ::1 at 2020-12-01 07:04:19 -0600
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:9:in `show'
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/restaurants/show.html.erb:2
+  [1m[36mDay Load (0.5ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  ↳ app/models/restaurant.rb:22:in `sort_by'
+  [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  ↳ app/models/restaurant.rb:13:in `collect'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/restaurants/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/show.html.erb within layouts/application (Duration: 46.1ms | Allocations: 14037)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 2.5ms | Allocations: 1161)
+Completed 200 OK in 62ms (Views: 54.2ms | ActiveRecord: 3.4ms | Allocations: 20166)
+
+
+Started GET "/restaurants/2/edit" for ::1 at 2020-12-01 07:04:22 -0600
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:17:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:18:in `edit'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  Rendering restaurants/edit.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.1ms | Allocations: 17)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 3.8ms | Allocations: 1176)
+  [1m[36mDay Load (0.5ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  ↳ app/models/restaurant.rb:22:in `sort_by'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  ↳ app/helpers/reviews_helper.rb:4:in `editable_reviews'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/reviews_helper.rb:4:in `block in editable_reviews'
+  Rendered restaurants/edit.html.erb within layouts/application (Duration: 58.0ms | Allocations: 38831)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 2.8ms | Allocations: 1161)
+Completed 200 OK in 82ms (Views: 71.3ms | ActiveRecord: 2.1ms | Allocations: 46671)
+
+
+Started GET "/users/7" for ::1 at 2020-12-01 07:05:40 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_facebook.html.erb (Duration: 1.3ms | Allocations: 141)
+  [1m[36mReview Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:8
+  Rendered users/show.html.erb within layouts/application (Duration: 8.6ms | Allocations: 1407)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 4.8ms | Allocations: 1324)
+Completed 200 OK in 57ms (Views: 44.9ms | ActiveRecord: 2.1ms | Allocations: 9487)
+
+
+Started GET "/restaurants" for ::1 at 2020-12-01 07:05:41 -0600
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 1642)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 3.5ms | Allocations: 1225)
+Completed 200 OK in 56ms (Views: 52.3ms | ActiveRecord: 0.9ms | Allocations: 7982)
+
+
+Started GET "/restaurants/new" for ::1 at 2020-12-01 07:05:42 -0600
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 1.8ms | Allocations: 181)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 5.4ms | Allocations: 1497)
+  Rendered restaurants/_days.html.erb (Duration: 37.8ms | Allocations: 31937)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 53.6ms | Allocations: 35780)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 2.9ms | Allocations: 1161)
+Completed 200 OK in 67ms (Views: 63.8ms | ActiveRecord: 0.4ms | Allocations: 41365)
+
+
+Started POST "/restaurants" for ::1 at 2020-12-01 07:08:03 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RestaurantsController#create as HTML
+  Parameters: {"authenticity_token"=>"ksOtEyvwSl+ZAZMr377QNHIWkCGP13ip6I9SIm5ab7OdYdU3Mh2X/okyC+nICllC3llHLMbo/gAI838NScAAxA==", "restaurant"=>{"author_id"=>"7", "name"=>"Burger King", "address"=>"Place Road\r\nCary, IL 60013", "carryout"=>"1", "outdoor_dining"=>"0", "indoor_dining"=>"0", "follows_rules"=>"0", "days_attributes"=>{"0"=>{"weekday_number"=>"0", "closed"=>"1", "opening_time"=>"12:00 AM", "closing_time"=>"12:00 AM"}, "1"=>{"weekday_number"=>"1", "closed"=>"1", "opening_time"=>"12:00 AM", "closing_time"=>"12:00 AM"}, "2"=>{"weekday_number"=>"2", "closed"=>"1", "opening_time"=>"12:00 AM", "closing_time"=>"12:00 AM"}, "3"=>{"weekday_number"=>"3", "closed"=>"1", "opening_time"=>"12:00 AM", "closing_time"=>"12:00 AM"}, "4"=>{"weekday_number"=>"4", "closed"=>"1", "opening_time"=>"12:00 AM", "closing_time"=>"12:00 AM"}, "5"=>{"weekday_number"=>"5", "closed"=>"1", "opening_time"=>"12:00 AM", "closing_time"=>"12:00 AM"}, "6"=>{"weekday_number"=>"6", "closed"=>"0", "opening_time"=>"7:00 AM", "closing_time"=>"11:00 PM"}}, "reviews_attributes"=>{"0"=>{"user_id"=>"7", "rating"=>"5", "content"=>"yup"}}}, "commit"=>"Create Restaurant"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mRestaurant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" = ? LIMIT ?[0m  [["name", "Burger King"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mRestaurant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" = ? LIMIT ?[0m  [["address", "Place Road\r\nCary, IL 60013"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mRestaurant Create (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "carryout", "outdoor_dining", "indoor_dining", "follows_rules", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["address", "Place Road\r\nCary, IL 60013"], ["carryout", 1], ["outdoor_dining", 0], ["indoor_dining", 0], ["follows_rules", 0], ["author_id", 7], ["created_at", "2020-12-01 13:09:35.153740"], ["updated_at", "2020-12-01 13:09:35.153740"]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "rating", "user_id", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["content", "yup"], ["rating", 5], ["user_id", 7], ["restaurant_id", 9], ["created_at", "2020-12-01 13:09:35.158689"], ["updated_at", "2020-12-01 13:09:35.158689"]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mDay Create (0.2ms)[0m  [1m[32mINSERT INTO "days" ("closed", "weekday", "opening_time", "closing_time", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["closed", 1], ["weekday", "2020-01-05 00:00:00"], ["opening_time", "2020-12-01 00:00:00"], ["closing_time", "2020-12-01 00:00:00"], ["restaurant_id", 9], ["created_at", "2020-12-01 13:09:35.161106"], ["updated_at", "2020-12-01 13:09:35.161106"]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mDay Create (0.3ms)[0m  [1m[32mINSERT INTO "days" ("closed", "weekday", "opening_time", "closing_time", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["closed", 1], ["weekday", "2020-01-06 00:00:00"], ["opening_time", "2020-12-01 00:00:00"], ["closing_time", "2020-12-01 00:00:00"], ["restaurant_id", 9], ["created_at", "2020-12-01 13:09:35.163647"], ["updated_at", "2020-12-01 13:09:35.163647"]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mDay Create (0.2ms)[0m  [1m[32mINSERT INTO "days" ("closed", "weekday", "opening_time", "closing_time", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["closed", 1], ["weekday", "2020-01-07 00:00:00"], ["opening_time", "2020-12-01 00:00:00"], ["closing_time", "2020-12-01 00:00:00"], ["restaurant_id", 9], ["created_at", "2020-12-01 13:09:35.167054"], ["updated_at", "2020-12-01 13:09:35.167054"]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mDay Create (0.2ms)[0m  [1m[32mINSERT INTO "days" ("closed", "weekday", "opening_time", "closing_time", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["closed", 1], ["weekday", "2020-01-08 00:00:00"], ["opening_time", "2020-12-01 00:00:00"], ["closing_time", "2020-12-01 00:00:00"], ["restaurant_id", 9], ["created_at", "2020-12-01 13:09:35.185653"], ["updated_at", "2020-12-01 13:09:35.185653"]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mDay Create (0.1ms)[0m  [1m[32mINSERT INTO "days" ("closed", "weekday", "opening_time", "closing_time", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["closed", 1], ["weekday", "2020-01-09 00:00:00"], ["opening_time", "2020-12-01 00:00:00"], ["closing_time", "2020-12-01 00:00:00"], ["restaurant_id", 9], ["created_at", "2020-12-01 13:09:35.187691"], ["updated_at", "2020-12-01 13:09:35.187691"]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mDay Create (0.3ms)[0m  [1m[32mINSERT INTO "days" ("closed", "weekday", "opening_time", "closing_time", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["closed", 1], ["weekday", "2020-01-10 00:00:00"], ["opening_time", "2020-12-01 00:00:00"], ["closing_time", "2020-12-01 00:00:00"], ["restaurant_id", 9], ["created_at", "2020-12-01 13:09:35.189914"], ["updated_at", "2020-12-01 13:09:35.189914"]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[36mDay Create (0.1ms)[0m  [1m[32mINSERT INTO "days" ("closed", "weekday", "opening_time", "closing_time", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["closed", 0], ["weekday", "2020-01-11 00:00:00"], ["opening_time", "2020-12-01 07:00:00"], ["closing_time", "2020-12-01 23:00:00"], ["restaurant_id", 9], ["created_at", "2020-12-01 13:09:35.192755"], ["updated_at", "2020-12-01 13:09:35.192755"]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:26:in `create'
+Redirected to http://localhost:3000/restaurants/9
+Completed 302 Found in 91767ms (ActiveRecord: 8.7ms | Allocations: 89311)
+
+
+Started GET "/restaurants/9" for ::1 at 2020-12-01 07:09:35 -0600
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:9:in `show'
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/restaurants/show.html.erb:2
+  [1m[36mDay Load (0.4ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/models/restaurant.rb:22:in `sort_by'
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/models/restaurant.rb:13:in `collect'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/restaurants/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/show.html.erb within layouts/application (Duration: 13.7ms | Allocations: 5555)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 1.8ms | Allocations: 1162)
+Completed 200 OK in 29ms (Views: 23.2ms | ActiveRecord: 1.5ms | Allocations: 11951)
+
+
+Started GET "/restaurants/9/edit" for ::1 at 2020-12-01 07:09:45 -0600
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:17:in `edit'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:18:in `edit'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  Rendering restaurants/edit.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.1ms | Allocations: 17)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 2.4ms | Allocations: 1176)
+  [1m[36mDay Load (0.3ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/models/restaurant.rb:22:in `sort_by'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/helpers/reviews_helper.rb:4:in `editable_reviews'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/reviews_helper.rb:4:in `block in editable_reviews'
+  Rendered restaurants/edit.html.erb within layouts/application (Duration: 48.9ms | Allocations: 38117)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 3.1ms | Allocations: 1163)
+Completed 200 OK in 87ms (Views: 80.2ms | ActiveRecord: 1.2ms | Allocations: 45416)
+
+
+Started DELETE "/restaurants/9" for ::1 at 2020-12-01 07:09:50 -0600
+Processing by RestaurantsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"eM6LIwq7V/pZqfZc4PiENJaA7u28qrpxciwx4VcEruFVJFfmqAehdWUOnruJbVIsZuZOxFk+UNXTKo5A9u6q5w==", "id"=>"9"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:44:in `destroy'
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:45:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:45:in `block in destroy'
+  [1m[36mReview Destroy (0.6ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = ?[0m  [["id", 22]]
+  ↳ app/controllers/restaurants_controller.rb:45:in `block in destroy'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:45:in `block in destroy'
+  [1m[36mDay Load (0.4ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."restaurant_id" = ?[0m  [["restaurant_id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:46:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[36mDay Destroy (0.8ms)[0m  [1m[31mDELETE FROM "days" WHERE "days"."id" = ?[0m  [["id", 57]]
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[36mDay Destroy (0.5ms)[0m  [1m[31mDELETE FROM "days" WHERE "days"."id" = ?[0m  [["id", 58]]
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[36mDay Destroy (0.6ms)[0m  [1m[31mDELETE FROM "days" WHERE "days"."id" = ?[0m  [["id", 59]]
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[36mDay Destroy (0.7ms)[0m  [1m[31mDELETE FROM "days" WHERE "days"."id" = ?[0m  [["id", 60]]
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[36mDay Destroy (0.7ms)[0m  [1m[31mDELETE FROM "days" WHERE "days"."id" = ?[0m  [["id", 61]]
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[36mDay Destroy (0.7ms)[0m  [1m[31mDELETE FROM "days" WHERE "days"."id" = ?[0m  [["id", 62]]
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[36mDay Destroy (0.4ms)[0m  [1m[31mDELETE FROM "days" WHERE "days"."id" = ?[0m  [["id", 63]]
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:46:in `block in destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:47:in `destroy'
+  [1m[36mRestaurant Destroy (0.3ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:47:in `destroy'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:47:in `destroy'
+Redirected to http://localhost:3000/restaurants
+Completed 302 Found in 67ms (ActiveRecord: 18.0ms | Allocations: 19486)
+
+
+Started GET "/restaurants" for ::1 at 2020-12-01 07:09:50 -0600
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1403)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 3.2ms | Allocations: 1219)
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 0.8ms | Allocations: 6910)
+
+
+Started DELETE "/signout" for ::1 at 2020-12-01 07:09:53 -0600
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7e8vx5aa4lfPxYHSbRDjm8Emi0g/dB+GwlXJX0wRK9TABfMCNCYU2PNi6TUEhTWDMUArYdrg9SJjU3b+7fsv0g=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 446)
+
+
+Started GET "/" for ::1 at 2020-12-01 07:09:53 -0600
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1352)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered application/_logged_out.html.erb (Duration: 0.5ms | Allocations: 178)
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.6ms | Allocations: 6217)
+
+
+Started GET "/" for ::1 at 2020-12-01 07:10:58 -0600
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 29.3ms | Allocations: 9378)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered application/_logged_out.html.erb (Duration: 0.8ms | Allocations: 181)
+Completed 200 OK in 67ms (Views: 57.5ms | ActiveRecord: 1.5ms | Allocations: 23794)
+
+
+Started GET "/signin" for ::1 at 2020-12-01 07:11:00 -0600
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 506)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered application/_logged_out.html.erb (Duration: 0.2ms | Allocations: 42)
+Completed 200 OK in 56ms (Views: 21.9ms | ActiveRecord: 1.2ms | Allocations: 13872)
+
+
+Started POST "/signin" for ::1 at 2020-12-01 07:11:10 -0600
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"xSoOmZOlqjSGr4Vj4Yas5sEwzQSYK9NPZ9yUmVG5TcUrIF3oldFmwJmFGtrcPtjL0BZclXf0CRSG16NlvUFihA==", "user_name"=>"smurphy", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "smurphy"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 285ms (ActiveRecord: 0.5ms | Allocations: 1553)
+
+
+Started GET "/users/1" for ::1 at 2020-12-01 07:11:11 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_standard.html.erb (Duration: 0.8ms | Allocations: 190)
+  [1m[36mReview Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "reviews" WHERE "reviews"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:11
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (Duration: 19.6ms | Allocations: 12089)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 2.5ms | Allocations: 1336)
+Completed 200 OK in 35ms (Views: 28.6ms | ActiveRecord: 1.7ms | Allocations: 19914)
+
+
+Started GET "/restaurants" for ::1 at 2020-12-01 07:11:14 -0600
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1396)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 4.4ms | Allocations: 1221)
+Completed 200 OK in 29ms (Views: 25.9ms | ActiveRecord: 1.1ms | Allocations: 7168)
+
+
+Started GET "/restaurants/new" for ::1 at 2020-12-01 07:11:16 -0600
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_errors.html.erb (Duration: 0.7ms | Allocations: 183)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/_form.html.erb (Duration: 37.1ms | Allocations: 2129)
+  Rendered restaurants/_days.html.erb (Duration: 37.3ms | Allocations: 38725)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/new.html.erb within layouts/application (Duration: 86.7ms | Allocations: 44779)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 2.4ms | Allocations: 1161)
+Completed 200 OK in 97ms (Views: 93.7ms | ActiveRecord: 1.5ms | Allocations: 50261)
+
+
+Started GET "/restaurants" for ::1 at 2020-12-01 07:11:19 -0600
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  [1m[36mRestaurant Load (2.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."name" ASC[0m
+  ↳ app/views/restaurants/index.html.erb:6
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 1381)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 6.8ms | Allocations: 1217)
+Completed 200 OK in 41ms (Views: 36.4ms | ActiveRecord: 3.3ms | Allocations: 6869)
+
+
+Started GET "/restaurants/2" for ::1 at 2020-12-01 07:11:20 -0600
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:9:in `show'
+  Rendering restaurants/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/restaurants/show.html.erb:2
+  [1m[36mDay Load (0.5ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  ↳ app/models/restaurant.rb:22:in `sort_by'
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+  ↳ app/models/restaurant.rb:13:in `collect'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/restaurants/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered restaurants/show.html.erb within layouts/application (Duration: 45.3ms | Allocations: 7939)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 3.4ms | Allocations: 1161)
+Completed 200 OK in 62ms (Views: 55.9ms | ActiveRecord: 2.0ms | Allocations: 14041)
+
+
+Started GET "/restaurants/2/reviews/9" for ::1 at 2020-12-01 07:11:26 -0600
+Processing by ReviewsController#show as HTML
+  Parameters: {"restaurant_id"=>"2", "id"=>"9"}
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:5:in `show'
+  Rendering reviews/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/reviews/show.html.erb:1
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/reviews/show.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered reviews/show.html.erb within layouts/application (Duration: 17.2ms | Allocations: 3977)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 5.4ms | Allocations: 1161)
+Completed 200 OK in 42ms (Views: 36.3ms | ActiveRecord: 1.3ms | Allocations: 10930)
+
+
+Started GET "/users/2" for ::1 at 2020-12-01 07:11:33 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_user'
+Completed 403 Forbidden in 5ms (ActiveRecord: 0.8ms | Allocations: 1475)
+
+
