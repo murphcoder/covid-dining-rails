@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2020_10_31_072714) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "days", force: :cascade do |t|
     t.boolean "closed"
     t.datetime "weekday"
     t.datetime "opening_time"
     t.datetime "closing_time"
-    t.integer "restaurant_id"
+    t.bigint "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_days_on_restaurant_id"
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_072714) do
     t.boolean "outdoor_dining"
     t.boolean "indoor_dining"
     t.boolean "follows_rules"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_restaurants_on_author_id"
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 2020_10_31_072714) do
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
-    t.integer "user_id"
-    t.integer "restaurant_id"
+    t.bigint "user_id"
+    t.bigint "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
