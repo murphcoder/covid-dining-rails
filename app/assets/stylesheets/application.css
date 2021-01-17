@@ -21,6 +21,7 @@
 
  .nav {
      width: 100%;
+     align-content: center;
  }
 
  .nav td {

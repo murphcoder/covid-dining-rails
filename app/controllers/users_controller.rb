@@ -4,7 +4,8 @@ class UsersController < ApplicationController
         unless current_user.admin
             return head(:forbidden)
         end
-        @users = User.all
+        users = User.all
+        @users = users.order(admin: :desc)
     end
 
     def new

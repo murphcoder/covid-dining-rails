@@ -19,7 +19,7 @@ class Restaurant < ApplicationRecord
     end
 
     def days_sorted
-        self.days.sort_by {|day| day.weekday_number}
+        self.days.order(weekday_number: :asc)
     end
 
     private
