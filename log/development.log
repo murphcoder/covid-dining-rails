@@ -33486,3 +33486,69 @@ Migrating to RemoveNameColumnFromUsers (20201031072714)
   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3509260885269153420)[0m
   [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-01-17 17:55:49 -0600
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (3.7ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 17.6ms | Allocations: 2113)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 22.9ms | Allocations: 5192)
+Completed 500 Internal Server Error in 493ms (ActiveRecord: 9.9ms | Allocations: 52867)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :id=>nil}, missing required keys: [:id]):
+    1: <td><%= link_to "Your Profile", user_path(current_user) %></td>
+    2: <% if current_user.admin %>
+    3:     <td><%= link_to "Grant Admin Privileges", users_path %></td>
+    4: <% end %>
+  
+app/views/application/_logged_in.html.erb:1
+app/helpers/application_helper.rb:13:in `menu'
+app/views/layouts/application.html.erb:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "smurphy"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murphcoder@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.3ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "email", "password_digest", "admin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "smurphy"], ["email", "murphcoder@gmail.com"], ["password_digest", "$2a$12$GJyHLUeq22z1A9sBC7lsJu77RvlIbkylj4oKq63eCYcyVQnmeo7w6"], ["admin", true], ["created_at", "2021-01-18 00:00:22.827977"], ["updated_at", "2021-01-18 00:00:22.827977"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2021-01-17 18:00:42 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 13.8ms | Allocations: 1950)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8:in `current_user'
+  Rendered application/_logged_in.html.erb (Duration: 14.6ms | Allocations: 4673)
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 3.9ms | Allocations: 19354)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :id=>nil}, missing required keys: [:id]):
+    1: <td><%= link_to "Your Profile", user_path(current_user) %></td>
+    2: <% if current_user.admin %>
+    3:     <td><%= link_to "Grant Admin Privileges", users_path %></td>
+    4: <% end %>
+  
+app/views/application/_logged_in.html.erb:1
+app/helpers/application_helper.rb:13:in `menu'
+app/views/layouts/application.html.erb:17
+Started GET "/" for ::1 at 2021-01-17 18:02:12 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:2
+  Rendered restaurants/index.html.erb within layouts/application (Duration: 26638.2ms | Allocations: 25268)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered application/_logged_out.html.erb (Duration: 1.9ms | Allocations: 179)
+Completed 200 OK in 30419ms (Views: 30400.5ms | ActiveRecord: 1.6ms | Allocations: 44905)
+
+
