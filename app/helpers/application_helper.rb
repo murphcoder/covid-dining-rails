@@ -1,7 +1,6 @@
 module ApplicationHelper
 
     def is_logged_in?
-        binding.pry
         !!session[:user_id]
     end
 
